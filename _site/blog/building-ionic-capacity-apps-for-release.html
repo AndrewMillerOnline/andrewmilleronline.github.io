@@ -58,45 +58,44 @@
 
 </nav>
   <div class="col-lg-10 mx-auto mt-5 post">
-  <h1><b>Do not go gentle into that good night</b></h1>
+  <h1><b>Building Ionic Capacitor Apps for Release</b></h1>
 
 <p class="post-metadata text-muted">
-  17 April 2016 -  
+  25 November 2019 -  
   <b>less than 1 min read time</b>
 
   <br>Tags: 
     
-    <a class="text-decoration-none no-underline" href="/blog/tags#poetry">
-      <span class="tag badge badge-pill text-primary border border-primary">Poetry</span>
+    <a class="text-decoration-none no-underline" href="/blog/tags#development">
+      <span class="tag badge badge-pill text-primary border border-primary">Development</span>
     </a>
     </p>
 
-<p>Do not go gentle into that good night,<br />
-Old age should burn and rave at close of day;<br />
-Rage, rage against the dying of the light.</p>
+<p>I’ve been playing around with Ionic for a while now, and recently started using Capacitor while working on a small-scale Android medicine reminder app MedReminder. I haven’t tried Ionic’s AppFlow for managing DevOps yet, but I’ve found that Capacitor certainly makes the app signing process easier since I can just let Google Play manage the signing.</p>
 
-<p>Though wise men at their end know dark is right,<br />
-Because their words had forked no lightning they<br />
-Do not go gentle into that good night.</p>
+<p>However, after publishing to the app store for the first time, I was surprised by the size of my app. It’s a simple Ionic app with only a few pages and very few additional plugins, but was pushing 11 MB. Since then, I was able to reduce the app size by 60%, down to only 4 MB, but I quickly discovered that there is a right and wrong way to do that.</p>
 
-<p>Good men, the last wave by, crying how bright<br />
-Their frail deeds might have danced in a green bay,<br />
-Rage, rage against the dying of the light.</p>
+<h2 id="the-wrong-way-to-minify">The Wrong Way to Minify</h2>
 
-<p>Wild men who caught and sang the sun in flight,<br />
-And learn, too late, they grieved it on its way,<br />
-Do not go gentle into that good night.</p>
+<p>When you run <code class="language-plaintext highlighter-rouge">npx cap open android</code>, you’ll see a build.gradle file that specifies a property called minifyEnabled. Changing this value to true did two things: first, it reduced my app from 11 MB down to 10MB. Second, it broke the app completely and resulted in instant crashing across every test client. Here’s a <a href="https://github.com/ionic-team/capacitor/issues/739">GitHub issue</a> with the same behavior, which is purportedly due to ProGuard.</p>
 
-<p>Grave men, near death, who see with blinding sight<br />
-Blind eyes could blaze like meteors and be gay,<br />
-Rage, rage against the dying of the light.</p>
+<h2 id="the-right-way-to-minify">The Right Way to Minify</h2>
 
-<p>And you, my father, there on the sad height,<br />
-Curse, bless, me now with your fierce tears, I pray.<br />
-Do not go gentle into that good night.<br />
-Rage, rage against the dying of the light.</p>
+<p>There’s a better approach to minifying that — while not immediately obvious from the Ionic and Capacitor documentation (at least, to me) — is facepalmingly obvious in hindsight. Simply use the following workflow when you’re ready to deploy your production build:</p>
 
-<p>— <em>Dylan Thomas, 1914 - 1953</em></p>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">ionic</span> <span class="nx">build</span> <span class="o">--</span><span class="nx">prod</span>
+<span class="nx">npx</span> <span class="nx">cap</span> <span class="nx">copy</span>
+<span class="nx">npx</span> <span class="nx">cap</span> <span class="nx">open</span> <span class="nx">android</span>
+</code></pre></div></div>
+
+<p>Then in Android Studio, do Build &gt; Generate Signed Bundle / APK and select Android App Bundle. Select your upload key, then the ‘release’ build variant and you’re good to go.  The final APK size is significantly smaller, which should help to <a href="https://medium.com/googleplaydev/shrinking-apks-growing-installs-5d3fcba23ce2">increase downloads and decrease uninstalls</a>.</p>
+
+<p><img src="/assets/app-size.png" alt="" /></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Version 1.0.1: no -prod flag, minifyEnabled=true
+Version 1.1.0: no -prod flag, minifyEnabled=false
+Version 1.2.0: with -prod flag, no minifyEnabled (since -prod does its own minifying)
+</code></pre></div></div>
 
 
 
@@ -110,7 +109,7 @@ Rage, rage against the dying of the light.</p>
     by <strong>Andrew Miller</strong>
   </small>
 
-  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/your_username"
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/AndrewMillerOnline"
        style="color: #6c757d"
        onMouseOver="this.style.color='#333333'"
        onMouseOut="this.style.color='#6c757d'">
