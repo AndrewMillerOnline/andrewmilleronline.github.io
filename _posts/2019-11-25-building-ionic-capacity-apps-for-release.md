@@ -1,7 +1,7 @@
 ---
 title: "Building Ionic Capacitor Apps for Release"
 tags: [Development]
-style: border
+style: fill
 color: info
 description: Blunders in properly minifying with Ionic and Capacitor
 ---

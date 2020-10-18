@@ -1,17 +1,19 @@
-- title: Student, Harvard CS
-  from: 2014
-  to: 2018
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-- title: Software Engineer, Google, UK
-  from: 2018
+- title: Student, University of Massachusetts Boston
+  from: 2016
   to: present
-  description: Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-               nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-               reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+  description: BS Management, concentrating in Entrepreneurship (with a healthy dose of Marketing and Business Intelligence). I moved and transferred schools a few times during this period, including a year spent at the University of Illinois studying Agricultural Economics, and a year at the University of Utah studying Kinesiology.
+
+- title: Full Stack Developer, AgReach
+  from: 2017
+  to: 2018
+  description: Created first-of-its-kind cloud backed mobile application, the AgReach Extension Helper, to facilitate agricultural extension work in rural Malawi. This application allows extension workers to more efficiently connect with smallholder farmers, while also providing easy visualization of KPIs to relevant stakeholders through a custom reporting dashboard.
+
+- title: Cyber and Language Analyst, US Army / NSA
+  from: 2010
+  to: 2016
+  description: If I told you, I'd have to kill you.  Just kidding.  But seriously, there's this complicated process where I have to get approval for what I can list on my resume/public websites.  I'd be glad to talk about what I can during an interview, though. ;)
+
+- title: Junior Software Developer
+  from: 2007
+  to: 2009
+  description: Web development with C#, ASP.NET, SQL

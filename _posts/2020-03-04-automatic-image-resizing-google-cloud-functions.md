@@ -1,7 +1,7 @@
 ---
 title: "Automatic Image Resizing with Google Cloud Functions"
 tags: [Development]
-style: border
+style: fill
 color: info
 description: Blunders in properly minifying with Ionic and Capacitor
 ---
