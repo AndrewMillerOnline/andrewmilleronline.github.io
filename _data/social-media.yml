@@ -66,6 +66,11 @@ stackoverflow:
   icon  : fab fa-stack-overflow
   color : f48024
 
+tableau public:
+  url   : https://public.tableau.com/profile/
+  icon  : far fa-chart-bar
+  color : be0027
+
 tumblr:
   url   : https://
   icon  : fab fa-tumblr
