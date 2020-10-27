@@ -1,8 +1,8 @@
 ---
-name: Viromob
-tools: [Node.js, Angular, Ionic, Firebase]
+name: AgReach Extension Helper
+tools: [Ionic, Angular]
 image: https://www.sketchappsources.com/resources/source-image/movie-badges-jurajjurik.png
-description: Mobile-first giveaway app
+description: Mobile app
 ---
 
 # Coming Soon
