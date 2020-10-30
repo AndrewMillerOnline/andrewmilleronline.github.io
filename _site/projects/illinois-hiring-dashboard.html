@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Software developer turned NSA analyst turned business student">
+
+  <title>Andrew Miller Online</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" type="text/css"/>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+
+
+<body class="d-flex flex-column h-100">
+
+  <main class="flex-shrink-0 container mt-5">
+  <nav class="navbar navbar-expand-lg navbar-light">
+
+  <a class="navbar-brand" href="/"><h5><b>Andrew Miller Online</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+    </div>
+  </div>
+
+</nav>
+  <div class="col-lg-10 mx-auto mt-5 post">
+  <h1 id="the-data">The Data</h1>
+
+<p>The <a href="https://data.illinois.gov/dataset/725state_employee_pay_hired_after_112011">dataset for this dashboard</a> is published on Illinois’ Data Portal.  It is a CSV file with 15 columns and 154,497 rows at the time of ingest.  It lists records of each hiring decision made by the State from 2011 until I downloaded the data on 10/26/2020.</p>
+
+<h2 id="the-viz">The Viz</h2>
+
+<iframe seamless="" frameborder="0" src="https://public.tableau.com/views/StateofIllinoisHiring2011-2020/HiringDashboard?:embed=yes&amp;:showVizHome=no&amp;:display_count=yes" scrolling="no" height="800" width="1000"></iframe>
+
+<p><a href="https://public.tableau.com/views/StateofIllinoisHiring2011-2020/HiringDashboard?:language=en&amp;:display_count=y&amp;:origin=viz_share_link">Open on Tableau Public</a></p>
+
+<h2 id="the-insight">The Insight</h2>
+
+<p>After looking at the data available, I created this dashboard in order to answer a few questions.  Namely:</p>
+<ul>
+  <li>How often do job openings for Position Title X appear?</li>
+  <li>In which counties are those openings available?</li>
+  <li>What is the salary growth potential for a given career track with the State?</li>
+  <li>How can someone identify current employees in Position X in order to find them on LinkedIn, ask for informational interviews, etc.</li>
+</ul>
+
+<p>This dashboard should be able to address all of those questions, and I believe it can serve as a useful tool for people interested in careers with the State.</p>
+
+<p>For example, let’s say a savvy young computer programmer wants to get a job with the State.  They’ll be looking at the ISA career path; that is, Information Systems Analyst I-III.  With the dashboard, they’ll quickly see that the median salary for ISA I is $71K, which increases to $88K for ISA II, and tops out at a median $133K for ISA III.  Moreover they’ll see that the vast majority of those positions are only available in Sangamon County (which makes the salary all the more appealing, since it’s not compensating for a Chicago COL).</p>
+
+<p>Further analysis will reveal that there have only been 10 hires at the ISA III level, and 9 of those 10 were the same individual.  So perhaps this career path is likely to stall out at ISA II.  Still, both the level I and II positions have seen steady hiring increases over the years and the enterprising young programmer now also has a list of state employees that they can reach out to on social media in order to start networking.  Not a bad research tool, really.</p>
+
+</div>
+  </main>
+
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Andrew Miller</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/AndrewMillerOnline"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/andrewmilleronline"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://public.tableau.com/profile/andrew.miller1604"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#be0027'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="far fa-chart-bar fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+  
+</footer>
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+
+</html>
