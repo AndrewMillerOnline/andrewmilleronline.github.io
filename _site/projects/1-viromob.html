@@ -58,7 +58,40 @@
 
 </nav>
   <div class="col-lg-10 mx-auto mt-5 post">
-  <h1 id="coming-soon">Coming Soon</h1>
+  <h2 id="overview">Overview</h2>
+
+<p>Viromob is a web-based business that I worked on between 2019 and 2020 as a solo founder.  Viromob is intended to be a tool for small business owners to promote their business through social-media giveaways.  With Viromob, entrepreneurs can easily host a product giveaway where customers earn entries through social actions, such as following the brand on Instagram.  Additionally, Viromob has an accompanying platform where users can find new giveaways to enter, see their current giveaways, and more.</p>
+
+<h2 id="the-tech-stack">The Tech Stack</h2>
+
+<p><img src="/assets/viromob-architecture.png" alt="Viromob Architecture" /></p>
+
+<p>Viromob contains two applications, the Giveaway Entry app and the Sponsor Dashboard app, as well as a Marketing Site.</p>
+
+<p><strong>Giveaway Entry App:</strong></p>
+<ul>
+  <li><a href="https://app.viromob.com">https://app.viromob.com</a></li>
+  <li>Progressive Web App</li>
+  <li>Coded with Angular 9 and Ionic Framework</li>
+  <li>Mobile-first design</li>
+</ul>
+
+<p><strong>Sponsor Dashboard:</strong></p>
+<ul>
+  <li>Angular 9 website</li>
+</ul>
+
+<p><strong>Marketing Site:</strong></p>
+<ul>
+  <li><a href="https://www.viromob.com">https://www.viromob.com</a></li>
+  <li>Static landing page built with Webflow</li>
+  <li>Content marketing blog powered by Webflow CMS</li>
+  <li>Integrates with Zapier and MailChimp</li>
+</ul>
+
+<h2 id="the-backend">The Backend</h2>
+
+<p>One of the most interesting parts of programming Viromob was working with Google Cloud Firestore and Cloud Functions to create a very powerful headless backend.  There are some semi-complex business rules related to a giveaway ending and the winner being drawn, notified, and confirmed that are enforced through Cloud Functions: a blog post detailing this is upcoming.  This also tied in nicely with beautiful transactional emails sent through MailJet.</p>
 
 </div>
   </main>
