@@ -3,7 +3,7 @@ title: "Automatic Image Resizing with Google Cloud Functions"
 tags: [Development]
 style: fill
 color: info
-description: Blunders in properly minifying with Ionic and Capacitor
+description: Walking through the use of Google Cloud Functions to automatically resize uploaded images
 ---
 
 I’m using Firebase as the backend for my current project, Viromob, and recently implemented functionality that will automatically resize any images uploaded to Cloud Storage. There are a few options available online for implementing this, but unfortunately both had some issues that need resolving. For posterity, here’s what I did.
