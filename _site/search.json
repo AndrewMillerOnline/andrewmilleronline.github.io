@@ -41,6 +41,14 @@
     } ,
   
     {
+      "title"    : "Creating Customer Value at Strava",
+      "category" : "",
+      "tags"     : "Case Study, Andrew's Analysis",
+      "url"      : "/blog/creating-customer-value-at-Strava",
+      "date"     : "2019-11-28 00:00:00 -0600"
+    } ,
+  
+    {
       "title"    : "Building Ionic Capacitor Apps for Release",
       "category" : "",
       "tags"     : "Development",

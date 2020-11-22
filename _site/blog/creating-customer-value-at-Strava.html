@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Software developer turned NSA analyst turned business student">
+
+  <title>Andrew Miller Online</title>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" type="text/css"/>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+
+</head>
+
+
+<body class="d-flex flex-column h-100">
+
+  <main class="flex-shrink-0 container mt-5">
+  <nav class="navbar navbar-expand-lg navbar-light">
+
+  <a class="navbar-brand" href="/"><h5><b>Andrew Miller Online</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+    </div>
+  </div>
+
+</nav>
+  <div class="col-lg-10 mx-auto mt-5 post">
+  <h1><b>Creating Customer Value at Strava</b></h1>
+
+<p class="post-metadata text-muted">
+  28 November 2019 -  
+  <b>4 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#case-study">
+      <span class="tag badge badge-pill text-primary border border-primary">Case Study</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#andrew-s-analysis">
+      <span class="tag badge badge-pill text-primary border border-primary">Andrew's Analysis</span>
+    </a>
+    </p>
+
+<h2 id="background">Background</h2>
+
+<p>Strava is a growth stage startup, which means they have one goal: increasing their customer base.  While they have been hugely successful at increasing their user base–to the tune of 1M new users each month–that hasn’t been translating into paying Summit customers.  As a long-time and entrepreneurial-minded Strava user (not customer), my take on <em>why</em> is simple: they’re not creating enough value for the customers.</p>
+
+<h2 id="how-strava-can-increase-value">How Strava Can Increase Value</h2>
+
+<p>Strava has a pretty simple model, which includes a set of free features available to all users and a set of paid features available only to their Summit customers.  Increasing the customer base can therefore take one of two approaches: add more Summit features (increase value) or figure out how to better communicate the existing value.  While simple, it’s certainly not easy, and figuring out <em>which</em> features to add is where Strava needs strong product management.</p>
+
+<h2 id="value-capture-and-api">Value Capture and API</h2>
+
+<p>One area of improvement is in value capture, specifically surrounding Strava’s API.  Now, APIs are great.  They help to increase the ecosystem around a product, and can even become a full-fledged revenue producing product in and of themselves.  Moreover, I believe that Strava’s API represents a strategically significant product moving forward, especially considering the recent trends in the wearable fitness industry (case in point: <a href="https://www.cnbc.com/2019/11/01/google-to-acquire-fitbit-valuing-the-smartwatch-maker-at-about-2point1-billion.html">Google acquiring FitBit</a>).</p>
+
+<p>That said, Strava could be utilizing its API to identify and vet potential product enhancements.  Just take a look at <a href="http://stravabestefforts.com">StravaBestEfforts.com</a>, a site that lets users track their Best Efforts over time.&lt;/p&gt;</p>
+
+<p><img src="/assets/strava-best-efforts.png" alt="" /></p>
+
+<p>Best Efforts are purely a creation of Strava: they are a programmatic calculation of how quickly you’ve run a specific distance, based on your GPS data.  Strava simply displays your best Best Effort for each distance on your profile, and shows you a little medallion on an activity where you’ve clocked a new top three best effort.  But what about this simple user story?  “As an athlete, I want to track the improvement in my Best Efforts over time.”  Strava doesn’t have anything resembling this functionality, which is no doubt how StravaBestEfforts came into being.</p>
+
+<p>So what’s the big deal with this?  Simply put, this is value that Strava isn’t capturing from its user data.  All that StravaBestEfforts does is retrieve user data from Strava’s API and then sort that data into a table.  It doesn’t even have graphs, it’s just an ugly table!  (There are some graphs on the Stats page, but they’re pretty bad.)  The big thing here is that it also has a paid account, for which it charges $2.99/month.  Think about that.  It’s providing a very simple data visualization tool (plus a few additional features with Premium, such as weather tracking) for 60% of Strava’s Summit 3-pack price.</p>
+
+<p>While I don’t know how many users are paying for this functionality, this is still an incredibly strong demand signal.  Even if only a handful of users pay for it, those are users that had to 1) actively search for, seek out, or somehow find this site;  2) provide permission to link their Strava account;  3) shell out their Paypal or credit card information.  The conversion rate would skyrocket if all of those steps were conveniently rolled into a Summit pack, let alone if the data were presented in a more attractive fashion.</p>
+
+<h2 id="generalizing-api-value-capture">Generalizing API value capture</h2>
+
+<p>While my conclusion is that Strava needs to implement this best effort tracking functionality, the truth is that’s not based on empirical evidence.  I’m not a product analyst at Strava, and I don’t have access to their data.  I also don’t have insight into the number of paying customers at Strava Best Efforts.  So how can we make this decision more empirical, and also generalize it to extend to products other than Strava?</p>
+
+<ol>
+  <li>Implement tracking analytics on your API if you don’t already have them.</li>
+  <li>Analyze those metrics for a given period of time, sorting by your top API clients, and then go find, use, and understand their product.  Figure out what they’re doing with your API data to determine if they’re <em>adding value</em> to your product/ecosystem or if they’re <em>siphoning value</em>.  I would argue that StravaBestEfforts is siphoning value that Strava should be capturing itself.</li>
+  <li>Once you’ve identified a value siphoning API client, analyze the API calls to determine the number of users, and try to determine how many of them are paying.  These figures should provide a decent basis for determining the potential upside for implementing the feature in your own product.  In the case of StravaBestEfforts, free users are limited to 180 days of Best Effort comparison, so it might be possible to differentiate between free and paying users by the activity date ranges included in the API calls.</li>
+</ol>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This is getting long, so I’ll wrap up for now.  The bottom line is that Strava needs to increase value for its customers, and the most surefire way to do that is by adding more paid features.  A smart product leader is one who uses data to drive their decisions, and in this case Strava could be utilizing their API data to vet demand for new features to ensure ROI for their development efforts.</p>
+
+
+
+</div>
+  </main>
+
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Andrew Miller</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/AndrewMillerOnline"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/andrewmilleronline"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://public.tableau.com/profile/andrew.miller1604"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#be0027'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="far fa-chart-bar fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+  
+</footer>
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+
+</html>
