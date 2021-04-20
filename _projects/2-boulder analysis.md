@@ -8,9 +8,9 @@ description: A data analysis project on three years of emails sent to the Boulde
 
 ## Project Description
 
-While browsing through various open data repositories, I stumbled upon one dataset in particular that intrigued me.  It contains three years of emails sent to the city council of Boulder, Colorado.  Being a fan of the show *Parks & Rec*, I was curious to know if the citizens of Boulder were just as crazy as the citizens of Pawnee.
+While browsing through various open data repositories, I stumbled upon one dataset in particular that intrigued me.  It contains three years of emails sent to the city council of Boulder, Colorado.  (I downloaded an old dataset with the three years in three separate files.  An updated, [combined repository is now available](https://open-data.bouldercolorado.gov/datasets/0b769502060943f0919b1930339edd63))  Being a fan of the show *Parks & Rec*, I was curious to know if the citizens of Boulder were just as crazy as the citizens of Pawnee.
 
-The code below is all abridged, but you can see the full source code on GitHub.
+The code below is all abridged, but you can see the [full source code on GitHub](https://github.com/AndrewMillerOnline/boulder-emails).
 
 ## Let's see what our data looks like first
 
