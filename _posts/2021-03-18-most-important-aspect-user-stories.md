@@ -26,17 +26,17 @@ For example, the screenshot above provides one possible interpretation of this s
 
 The first story didn't include a why, so let's add one:
 
-> As a content manager, I want to add all countries to a record at once, so that I can associate multiple countries to a record
+> As a content manager, I want to add all countries to a record at once, so that I can associate multiple countries to a record.
 
-This story still doesn't get us where we need to be, because the goal is fairly redundant; in essence, it saying "I want to add countries to a record so that I can add countries to a record."  It misses the fundamental essence underlying the customer's need.
+This story still doesn't get us where we need to be, because the goal is fairly redundant; in essence, it's saying "I want to add countries to a record so that I can add countries to a record."  Unfortunately, that misses the fundamental essence underlying the customer's need.
 
 ## Version Three: Including the Goal
 > As a content manager, I want to add all countries to a record at once, so that I can quickly create records with 180-190 countries.
 
-The key difference, the why, helps to explain how the user will actually be utilizing this new functionality.  Not only will they be associating multiple countries to a record, but they'll be associating hundreds of countries to each record.
+In this version, the key difference -- the why -- helps to explain how the user will actually be utilizing this new functionality.  Not only will they be associating multiple countries to a record, but they'll be associating hundreds of countries to each record.
 
 Now we know why they truly want this feature: it's not just about the basic functional requirement of associating multiple countries to a record, or even doing it all in one submission or database transcation.  Instead, our user will be adding so many countries to each record that being able to add them all in one button click compared to hundreds represents a **significant** time savings.
 
 ![Adding countries via multiselect checkboxes with a select all](/assets/add-country-multiple.png)
 
-As a result of this added clarify, we now arrive at a solution that meets the customer's need.
+As a result of this added clarify, we now arrive at a solution that meets the customer's need.  Being able to effectively communicate the purpose behind a user story stops problems before they occur.  If a developer had created the feature as depicted in the first image, and then had to go back to re-do it after the business analyst or customer points out that it doesn't actually meet their needs, we've now wasted a significant amount of time.  Communication prevents this waste, and keeps our teams operating at maximum velocity and with maximum impact.
