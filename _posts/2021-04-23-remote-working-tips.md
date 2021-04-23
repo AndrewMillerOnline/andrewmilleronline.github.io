@@ -1,5 +1,5 @@
 ---
-title: "Remote Working Tips"
+title: "My Remote Working Tips"
 tags: [Remote Work]
 style: fill
 color: info
@@ -28,7 +28,7 @@ I use the free, open-source diagrams.net (formerly draw.io).  Below is a quick c
 
 ![Simple diagram made on diagrams.net](/assets/diagrams-net-example.png)
 
-### Tool #2: Meeting/Email Replacement
+### Tool #2: Meeting Replacement
 
 No, I'm not talking about Zoom, Google Meets, or another video chat client.  In fact, I think many remote workers are burnt out from constant video calls.  While video calls do have their place when trying to discuss particularly important topics, I personally employ the following protocol based on the complexity of the topic I need to discuss:
 
