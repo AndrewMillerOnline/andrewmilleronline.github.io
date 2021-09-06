@@ -3,5 +3,9 @@
   color: secondary
 
 - name: Tableau
-  percentage: 55
+  percentage: 65
   color: info
+
+- name: Tableau CRM (Einstein Analytics)
+  percentage: 95
+  color: primary
