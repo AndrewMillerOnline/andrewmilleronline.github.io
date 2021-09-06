@@ -1,6 +1,14 @@
 [
   
     {
+      "title"    : "My Remote Working Tips",
+      "category" : "",
+      "tags"     : "Remote Work",
+      "url"      : "/blog/remote-working-tips",
+      "date"     : "2021-04-23 00:00:00 -0500"
+    } ,
+  
+    {
       "title"    : "The Most Important Aspect of Agile User Stories",
       "category" : "",
       "tags"     : "Development, Agile",
