@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<!--
+  portfolYOU Jekyll theme by Youssef Raafat
+  Free for personal and commercial use under the MIT license
+  https://github.com/YoussefRaafatNasry/portfolYOU
+-->
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Marathon Viz">
+  <meta property="og:description" content="Data analysis and visualization project for a master's degree course">
+
+  <title>Marathon Viz</title>
+  <meta name="description" content="Data analysis and visualization project for a master's degree course">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <a class="navbar-brand" href="/"><h5><b>Andrew Miller Online</b></h5></a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/projects/">Projects</a>
+
+      <a class="nav-item nav-link " href="/blog/">Blog</a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+  <h1 id="project-description">Project Description</h1>
+
+<p>For the final project in my data visualization course as part of the MS Data Science program at DePaul, I had to create complex visualizations from the dataset of my choice.  As an avid runner, naturally I wanted to visualize something running related.  Unable to find a suitable dataset, I instead created my own using Python to scrape over 2 million marathon finisher results from four of the largest marathons in the world.  I then used R and ggplot to create visualizations from this data.</p>
+
+<h2 id="data-gathering">Data Gathering</h2>
+
+<p>To build the dataset, I used Python to scrape individual finisher results from the websites of the Berlin, New York City, Chicago, and London marathons.</p>
+
+<p>Each website was distinct enough that it required its own scraper, however the four websites generally fell into two different categories: plain HTML-based results determined by url parameters, and Javascript-based results powered by a front-end framework such as Angular.</p>
+
+<h3 id="plain-html">Plain HTML</h3>
+
+<p>For the plain HTML pages, once I identified the relevant query string parameters used to generate the list of results, gathering the data was a simple matter of requesting each page of results and then parsing the HTML with BeautifulSoup.</p>
+
+<p>However, each of these races had ~ 50,000 finishers per year, and the results websites were limited to between 50 and 1,000 finisher results per page.  That translated to a huge number of requests, and a lot of time spent scraping.  To speed this up, I was able to use the concurrent.futures library to employ multi-threading and significantly decrease the amount of time required.</p>
+
+<p>See the <a href="https://github.com/AndrewMillerOnline/marathon-scrapers/blob/main/Chicago/chicago.ipynb">Chicago scraper on GitHub</a> for an example.</p>
+
+<h3 id="javascript-based">Javascript-based</h3>
+
+<p>For the JS-based websites, I needed to use Selenium webdriver in order to simulate a user interacting with the browser.  This was fairly straightforward, although I did encounter some problems with timeouts.  To overcome this, I implemented some simple error-catching that would tell the scraper to go back a page when it reached an unexpected error.  Doing so would send a new request to the backend, and generally fix whatever problem had caused the temporary timeout.</p>
+
+<p>Here’s a short snippet of the error handling:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#loop through each page and gather the results
+</span><span class="n">num_error</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">num_error</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">:</span>
+    
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">try_do_scrape</span><span class="p">(</span><span class="n">current_page</span><span class="p">,</span> <span class="n">last_page</span><span class="p">)</span>
+        
+    <span class="k">except</span> <span class="n">TimeoutException</span><span class="p">:</span>
+        <span class="n">current_page</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"//li[@class='paginate_button page-item active']"</span><span class="p">).</span><span class="n">text</span><span class="p">)</span>
+        <span class="c1">#TimeoutException is always thrown on the final page
+</span>        <span class="c1">#If we're on the final page, quit the loop and save
+</span>        <span class="k">if</span> <span class="n">current_page</span> <span class="o">==</span> <span class="n">last_page</span><span class="p">:</span>
+            <span class="k">break</span>
+            
+    <span class="k">except</span> <span class="p">(</span><span class="n">UnexpectedAlertPresentException</span><span class="p">,</span> <span class="n">StaleElementReferenceException</span><span class="p">)</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="s">f"**Encountered exception #</span><span class="si">{</span><span class="n">num_error</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s">**"</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">ex</span><span class="p">)</span>
+        <span class="n">time</span><span class="p">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="n">current_page</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">driver</span><span class="p">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"//li[@class='paginate_button page-item active']"</span><span class="p">).</span><span class="n">text</span><span class="p">)</span>
+        
+        
+        <span class="k">if</span> <span class="n">current_page</span> <span class="o">==</span> <span class="n">last_page</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="c1">#Go back a page and start over (we'll dedupe during cleanup)
+</span>        <span class="n">current_page</span> <span class="o">-=</span> <span class="mi">1</span>
+        <span class="n">prev_button</span> <span class="o">=</span> <span class="n">driver</span><span class="p">.</span><span class="n">find_element_by_xpath</span><span class="p">(</span><span class="s">"//a[text()='Previous']"</span><span class="p">)</span>
+        <span class="n">prev_button</span><span class="p">.</span><span class="n">send_keys</span><span class="p">(</span><span class="n">Keys</span><span class="p">.</span><span class="n">ENTER</span><span class="p">)</span>
+        <span class="n">driver</span><span class="p">.</span><span class="n">execute_script</span><span class="p">(</span><span class="s">"arguments[0].scrollIntoView();"</span><span class="p">,</span> <span class="n">select_element</span><span class="p">)</span>
+        <span class="n">num_error</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+<span class="n">cleanup_and_save</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Want to see the full code?  Check out the <a href="https://github.com/AndrewMillerOnline/marathon-scrapers/blob/main/Berlin/berlin.ipynb">Berlin scraper on GitHub</a>.</p>
+
+<h3 id="finishing-up">Finishing Up</h3>
+<p>After I gathered all the results, I did a small amount of normalizing to match up the column names and saved them all into one big CSV.  I also gathered weather-related data (max temp, min temp, and precipitation) from a NOAA website and augmented all of the results with race-day weather for the race location.</p>
+
+<h2 id="data-viz">Data Viz</h2>
+
+<p>Now that I had a dataset, the real work began (this was for a data viz course, after all).</p>
+
+<h3 id="eda">EDA</h3>
+
+<p>One downsides to my decision to build my own dataset is that my dataset was DIRTY.  But this is the real world, right?  All data in the real world is dirty.  Here are a few EDA visualizations to show the differences in data provided by the race websites.</p>
+
+<p><img src="/assets/marathon/eda1.png" alt="eda1" />
+<img src="/assets/marathon/eda2.png" alt="eda2" /></p>
+
+<h3 id="get-to-the-real-viz-man">Get To The Real Viz, Man</h3>
+
+<p>Ok, that small caveat about the data quality is out of the way, so let’s move on to the viz.  I posed a number of questions to the data, and these are the results I got.</p>
+
+<h3 id="which-race-has-the-fastest-finish-times">Which Race Has the Fastest Finish Times?</h3>
+<p><img src="/assets/marathon/fastest.png" alt="eda2" /></p>
+
+<p>It looks like Berlin has the fastest finish times!  I wonder why that is…Could the weather have anything to do with it?</p>
+
+<h3 id="how-does-weather-impact-finish-time">How Does Weather Impact Finish Time?</h3>
+<p><img src="/assets/marathon/chicago-weather.png" alt="weather" />
+<img src="/assets/marathon/berlin-weather.png" alt="weather" /></p>
+
+<p>Ok, the weather most definitely impacts finish time!  Look at Chicago around 2007, ouch.  Both the daily high temp and the daily low look like they affect runners.  Berlin looks like it gets just as hot as Chicago, but the lows appear lower.  How consistent is that?</p>
+
+<h3 id="which-race-has-the-most-predictable-weather">Which Race Has the Most Predictable Weather?</h3>
+<p><img src="/assets/marathon/weather-box.png" alt="weather" /></p>
+
+<p>We can see in this graph that New York City has the least variability in both daily highs and daily lows.  However, there are only six years of data for New York, so we must be careful in assuming that New York has the best weather.  Berlin and Chicago both have identical median high and low temperatures, but Berlin clearly has less variability than Chicago.</p>
+
+<h3 id="pacing-strategies">Pacing Strategies</h3>
+<p>Next, let’s look at pacing strategies.  I performed a calculation based on each runner’s half-marathon split and finish times to classify each runner as either a negative split (faster second half than first half), positive split (slower second half), or even split.  For runners to be classified as an even split, I allowed a 10% margin, where each half could be up to 5% slower or 5% faster than the other.</p>
+
+<p>I then posed some questions of the pacing strategy data.</p>
+
+<h3 id="which-pacing-strategy-is-most-common">Which Pacing Strategy is most Common?</h3>
+<p><img src="/assets/marathon/splits.png" alt="splits" />
+This is one of the most surprising graphs to me!  It’s so common in running circles to hear that negative splits are “best”.  But looking at the data, they’re certainly not the most common!  I wonder how a runner’s fitness impacts their pacing strategy?</p>
+
+<h3 id="how-does-pacing-strategy-vary-based-on-a-runners-overall-speed">How Does Pacing Strategy Vary Based on a Runner’s Overall Speed?</h3>
+
+<p><img src="/assets/marathon/split-speeds.png" alt="weather" />
+Oh, now this is very interesting.  The proportion of runners doing negative splits appears to be fairly consistent, regardless of their finish time (which is what the quartiles are based on).  However, as runners get slower, the proportion of positive splitters increases.  This makes intuitive sense for a few reasons – but let’s see how the weather impacts pacing strategy.</p>
+
+<h3 id="how-does-pacing-strategy-differ-based-on-the-weather">How Does Pacing Strategy Differ Based on the Weather?</h3>
+
+<p><img src="/assets/marathon/split-weather.png" alt="weather" />
+This is somewhat of a unique graph choice, inspired by a mosaic plot.  For each year, the graph displays the percent of runners who employed a positive split versus those who employed an even split.  As we can see, on cooler years the percent or runners who run even splits increases.  However, the scorching Chicago sun takes its toll in hotter years, and significantly more runners end up running a slower second half of the race due to heat.</p>
+
+<h2 id="bonus-viz">Bonus Viz!</h2>
+
+<p>Here’s a waffle chart depicting the dominance of Kenyan men at the Berlin marathon.</p>
+
+<p><img src="/assets/marathon/kenyan-metals.png" alt="weather" /></p>
+
+<p>Finally, here’s an animated viz to show when Kipchoge breaks away from the competition during the 2018 Berlin marathon (when he set a new World Record of 2:01:39).  To accomplish this graph, I took the top 5 runners from Berlin that year and at each split calculated how far they were behind Kipchoge.  Then I pivoted that data so I only had three columns: Name, Split, and TimeBehindLeader.  I used those variables with ggplot and gganimate to create the below gif.</p>
+
+<p><img src="/assets/marathon/eliud.gif" alt="weather" /></p>
+
+</div>
+  </main>
+
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    <i class="fas fa-code"></i> with <i class="fas fa-heart"></i>
+    by <strong>Andrew Miller</strong>
+  </small>
+
+  <div class="container-fluid justify-content-center"><a class="social mx-1"  href="https://www.github.com/AndrewMillerOnline"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#333333'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-github fa-1x"></i>
+    </a><a class="social mx-1"  href="https://www.linkedin.com/in/andrewmilleronline"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#007bb5'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="fab fa-linkedin-in fa-1x"></i>
+    </a><a class="social mx-1"  href="https://public.tableau.com/profile/andrew.miller1604"
+       style="color: #6c757d"
+       onMouseOver="this.style.color='#be0027'"
+       onMouseOut="this.style.color='#6c757d'">
+      <i class="far fa-chart-bar fa-1x"></i>
+    </a>
+
+</div><small id="attribution">
+    theme <a href="https://github.com/YoussefRaafatNasry/portfolYOU">portfolYOU</a>
+  </small>
+  
+</footer>
+
+  
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+
+</body>
+
+</html>

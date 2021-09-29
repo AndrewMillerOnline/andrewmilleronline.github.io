@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : Andrew Miller Online
 description         : >-
-                      Software developer turned NSA analyst turned business student
+                      Software developer turned NSA analyst turned data analyst
 baseurl             : ""                     # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 repository          : andrewmilleronline/andrewmilleronline.github.io     # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
 remote_theme        : YoussefRaafatNasry/portfolYOU

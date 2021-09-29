@@ -21,38 +21,39 @@
 
   <meta property="og:type" content="website">
   <meta property="og:title" content="Projects">
-  <meta property="og:description" content="Software developer turned NSA analyst turned business student">
+  <meta property="og:description" content="Software developer turned NSA analyst turned data analyst">
 
   <title>Projects</title>
-  <meta name="description" content="Software developer turned NSA analyst turned business student">
+  <meta name="description" content="Software developer turned NSA analyst turned data analyst">
 
-  
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
 
   <!-- Font Awesome CDN -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
 
   <!-- Bootstrap CSS CDN -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
   <!-- Animate CSS CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css" type="text/css"/>
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="/assets/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/assets/css/style.css">
 
 </head>
 
-
-<body class="d-flex flex-column h-100">
+<body class="h-100 d-flex flex-column">
 
   <main class="flex-shrink-0 container mt-5">
-  <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-themed">
 
   <a class="navbar-brand" href="/"><h5><b>Andrew Miller Online</b></h5></a>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <i class="fas fa-1x fa-bars text-themed"></i>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -64,13 +65,12 @@
 
       
 
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
     </div>
   </div>
 
 </nav>
-  <!-- Remote Projects JS -->
-<script src="/assets/js/remote-projects.js"></script>
-
+    
 <div class="card-columns m-3 mt-5">
 
   <!-- Remote Projects -->
@@ -78,7 +78,17 @@
 
   <!-- Local Projects -->
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/2-illinois-hiring-dashboard" class="project card text-dark"><img id="illinois-hiring-dashboard-img" class="card-img-top" src="/assets/illinois-hiring-tableau-viz.png" alt="Illinois Hiring Dashboard" /><div class="card-body">
+  <a href="/projects/1-marathon-viz" class="project card text-themed"><img id="marathon-viz-img" class="card-img-top" src="/assets/marathon/kenyan-metals.png" alt="Marathon Viz" /><div class="card-body">
+      <h5 id="marathon-viz-name" class="card-title">Marathon Viz
+      </h5>
+      <p id="marathon-viz-desc" class="card-text">Data analysis and visualization project for a master's degree course</p>
+      <p id="marathon-viz-tools" class="card-text"><span class="badge badge-pill text-primary border border-primary ml-1">Python</span><span class="badge badge-pill text-primary border border-primary ml-1">Pandas</span><span class="badge badge-pill text-primary border border-primary ml-1">Jupyter Notebooks</span><span class="badge badge-pill text-primary border border-primary ml-1">R</span><span class="badge badge-pill text-primary border border-primary ml-1">ggplot</span></p>
+    </div>
+  </a>
+</div>
+
+  <div class="wow animated fadeIn" data-wow-delay=".15s">
+  <a href="/projects/2-illinois-hiring-dashboard" class="project card text-themed"><img id="illinois-hiring-dashboard-img" class="card-img-top" src="/assets/illinois-hiring-tableau-viz.png" alt="Illinois Hiring Dashboard" /><div class="card-body">
       <h5 id="illinois-hiring-dashboard-name" class="card-title">Illinois Hiring Dashboard
       </h5>
       <p id="illinois-hiring-dashboard-desc" class="card-text">A Tableau dashboard that visualizes the State of Illinois' hiring data</p>
@@ -88,7 +98,7 @@
 </div>
 
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/2-illinois-overdose-dashboard" class="project card text-dark"><img id="illinois-overdose-dashboard-img" class="card-img-top" src="/assets/illinois-overdose-tableau-viz.png" alt="Illinois Overdose Dashboard" /><div class="card-body">
+  <a href="/projects/2-illinois-overdose-dashboard" class="project card text-themed"><img id="illinois-overdose-dashboard-img" class="card-img-top" src="/assets/illinois-overdose-tableau-viz.png" alt="Illinois Overdose Dashboard" /><div class="card-body">
       <h5 id="illinois-overdose-dashboard-name" class="card-title">Illinois Overdose Dashboard
       </h5>
       <p id="illinois-overdose-dashboard-desc" class="card-text">A Tableau dashboard that visualizes overdose deaths in Illinois between 2013 and 2018</p>
@@ -98,7 +108,7 @@
 </div>
 
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/2-boulder-analysis" class="project card text-dark"><img id="what-s-on-your-mind-boulder-img" class="card-img-top" src="/assets/boulder_6_0.png" alt="What's on Your Mind, Boulder?" /><div class="card-body">
+  <a href="/projects/2-boulder-analysis" class="project card text-themed"><img id="what-s-on-your-mind-boulder-img" class="card-img-top" src="/assets/boulder_6_0.png" alt="What's on Your Mind, Boulder?" /><div class="card-body">
       <h5 id="what-s-on-your-mind-boulder-name" class="card-title">What's on Your Mind, Boulder?
       </h5>
       <p id="what-s-on-your-mind-boulder-desc" class="card-text">A data analysis project on three years of emails sent to the Boulder city council</p>
@@ -108,7 +118,7 @@
 </div>
 
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/3-veteran-gi-bill-usage-research" class="project card text-dark"><img id="veteran-gi-bill-usage-research-img" class="card-img-top" src="/assets/veterans-as-maximizers.png" alt="Veteran GI Bill Usage Research" /><div class="card-body">
+  <a href="/projects/3-veteran-gi-bill-usage-research" class="project card text-themed"><img id="veteran-gi-bill-usage-research-img" class="card-img-top" src="/assets/veterans-as-maximizers.png" alt="Veteran GI Bill Usage Research" /><div class="card-body">
       <h5 id="veteran-gi-bill-usage-research-name" class="card-title">Veteran GI Bill Usage Research
       </h5>
       <p id="veteran-gi-bill-usage-research-desc" class="card-text">A research paper I authored, "Measuring the Effects of Post-9/11 GI Bill Changes on Veteran Education Benefit Usage"</p>
@@ -118,7 +128,7 @@
 </div>
 
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/4-agreach-extension-helper" class="project card text-dark"><img id="agreach-extension-helper-img" class="card-img-top" src="https://www.sketchappsources.com/resources/source-image/movie-badges-jurajjurik.png" alt="AgReach Extension Helper" /><div class="card-body">
+  <a href="/projects/4-agreach-extension-helper" class="project card text-themed"><img id="agreach-extension-helper-img" class="card-img-top" src="https://www.sketchappsources.com/resources/source-image/movie-badges-jurajjurik.png" alt="AgReach Extension Helper" /><div class="card-body">
       <h5 id="agreach-extension-helper-name" class="card-title">AgReach Extension Helper
       </h5>
       <p id="agreach-extension-helper-desc" class="card-text">Mobile app</p>
@@ -128,7 +138,7 @@
 </div>
 
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/baton-rouge-311-call-dashboard" class="project card text-dark"><img id="baton-rouge-311-dashboard-img" class="card-img-top" src="/assets/baton-rouge-311.png" alt="Baton Rouge 311 Dashboard" /><div class="card-body">
+  <a href="/projects/baton-rouge-311-call-dashboard" class="project card text-themed"><img id="baton-rouge-311-dashboard-img" class="card-img-top" src="/assets/baton-rouge-311.png" alt="Baton Rouge 311 Dashboard" /><div class="card-body">
       <h5 id="baton-rouge-311-dashboard-name" class="card-title">Baton Rouge 311 Dashboard
       </h5>
       <p id="baton-rouge-311-dashboard-desc" class="card-text">A Tableau dashboard to display KPIs relevant to Baton Rouge's 311 responses</p>
@@ -138,7 +148,7 @@
 </div>
 
   <div class="wow animated fadeIn" data-wow-delay=".15s">
-  <a href="/projects/viromob" class="project card text-dark"><img id="viromob-img" class="card-img-top" src="\assets\viromob-logo.png" alt="Viromob" /><div class="card-body">
+  <a href="/projects/viromob" class="project card text-themed"><img id="viromob-img" class="card-img-top" src="\assets\viromob-logo.png" alt="Viromob" /><div class="card-body">
       <h5 id="viromob-name" class="card-title">Viromob
       </h5>
       <p id="viromob-desc" class="card-text">Mobile-first giveaway app</p>
@@ -150,6 +160,7 @@
   
 
 </div>
+
   </main>
 
   <footer class="mt-auto py-3 text-center">
@@ -181,6 +192,7 @@
   </small>
   
 </footer>
+
   
   <!-- GitHub Buttons -->
 <script async defer src="https://buttons.github.io/buttons.js"></script>
@@ -204,6 +216,7 @@ $(function () {
     $('[data-toggle="tooltip"]').tooltip()
 })
 </script>
+
 
 </body>
 
