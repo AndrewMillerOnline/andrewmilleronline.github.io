@@ -51,7 +51,8 @@ q4 = foreach q4 generate "0" as 'index', 'Value';
 /* Now we can cogroup our four queries together to get them in one row.
  In theory, you should be able to cogroup all four in one call as such:
    res = cogroup q1 by 'index' left, q2 by 'index', q3 by 'index', q4 by 'index';
- However, while this is syntactically correct, in my experience it doesn't work.  Instead, we'll need to do 3 cogroups! */
+ However, while this is syntactically correct, in my experience it doesn't work.
+ Instead, we'll need to do 3 cogroups! */
 
 res = cogroup q1 by 'index' left, q2 by 'index';
 res = foreach res generate q1.'index' as 'index', first(q1.'Value') as 'Name', first(q2.'Value') as 'Age';
