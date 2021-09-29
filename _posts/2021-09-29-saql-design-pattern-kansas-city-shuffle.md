@@ -49,17 +49,18 @@ q4 = filter q by 'Variable' == "Location";
 q4 = foreach q4 generate "0" as 'index', 'Value';
 
 /* Now we can cogroup our four queries together to get them in one row.
- In theory, you should be able to cogroup all four in one call as such: res = cogroup q1 by 'index' left, q2 by 'index', q3 by 'index', q4 by 'index';
- However, while this is syntactically correct, in my experience it doesn't work.  Instead, we'll need to do 4 cogroups! */
+ In theory, you should be able to cogroup all four in one call as such:
+   res = cogroup q1 by 'index' left, q2 by 'index', q3 by 'index', q4 by 'index';
+ However, while this is syntactically correct, in my experience it doesn't work.  Instead, we'll need to do 3 cogroups! */
 
 res = cogroup q1 by 'index' left, q2 by 'index';
-res = foreach res generate q1.'index' as 'index', q1.'Value' as 'Name', q2.'Value' as 'Age';
+res = foreach res generate q1.'index' as 'index', first(q1.'Value') as 'Name', first(q2.'Value') as 'Age';
 
 res = cogroup res by 'index' left, q3 by 'index';
-res = foreach res generate res.'index' as 'index', res.'Name' as 'Name', res.'Age' as 'Age, q3.'Value' as 'Gender';
+res = foreach res generate res.'index' as 'index', first(res.'Name') as 'Name', first(res.'Age') as 'Age', first(q3.'Value') as 'Gender';
 
 res = cogroup res by 'index' left, q4 by 'index';
-res = foreach res generate res.'Name' as 'Name', res.'Age' as 'Age, res.'Gender' as 'Gender', q4.'Value' as 'Location';
+res = foreach res generate first(res.'Name') as 'Name', first(res.'Age') as 'Age', first(res.'Gender') as 'Gender', first(q4.'Value') as 'Location';
 
 --- That's it!  Our table is now in a wide format.
 
@@ -72,6 +73,9 @@ We need something to serve as a key when cogrouping the queries together.
 
 ### Why is the index a zero string "0"?
 Believe it or not, if you generate 0 as 'index' and use that to cogroup, SAQL will return an error due to the Numeric type.  So I put it in a string.  The value of zero is arbitrary.
+
+### Why use the first() function?
+Cogroup will automatically group based on the key provided, so we need to use aggregate functions.  This can complicate things, especially if our table had included information for more people.  If it has 2 people, we can use first() and last() to distinguish.  If it has 3+, things get even more complicated.
 
 ### Isn't there an easier way to do this?
 Not that I know of.  If you know another way, I'd love to hear!
