@@ -1,5 +1,5 @@
 ---
-title: "SAQL Design Pattern: The Kansas City Shuffle"
+title: "SAQL Design Pattern: Reshaping Long to Wide (The Kansas City Shuffle)"
 tags: [Tableau CRM, Business Intelligence]
 style: fill
 color: primary
@@ -31,11 +31,11 @@ It's an easy fix with the Kansas City Shuffle!
 # The Design Pattern
 
 ```sql
----First we need to load and filter our dataset to get the initital table above
+-- First we need to load and filter our dataset to get the initital table above
 q = load "Variables";
 q = filter q by <<whatever>>;
 
---- For each row that we want to transform to a column, we'll need a separate variable
+-- For each row that we want to transform to a column, we'll need a separate variable
 q1 = filter q by 'Variable' == "Name";
 q1 = foreach q1 generate "0" as 'index', 'Value';
 
@@ -55,15 +55,26 @@ q4 = foreach q4 generate "0" as 'index', 'Value';
  Instead, we'll need to do 3 cogroups! */
 
 res = cogroup q1 by 'index' left, q2 by 'index';
-res = foreach res generate q1.'index' as 'index', first(q1.'Value') as 'Name', first(q2.'Value') as 'Age';
+res = foreach res generate
+  q1.'index' as 'index',
+  first(q1.'Value') as 'Name',
+  first(q2.'Value') as 'Age';
 
 res = cogroup res by 'index' left, q3 by 'index';
-res = foreach res generate res.'index' as 'index', first(res.'Name') as 'Name', first(res.'Age') as 'Age', first(q3.'Value') as 'Gender';
+res = foreach res generate
+  res.'index' as 'index',
+  first(res.'Name') as 'Name',
+  first(res.'Age') as 'Age',
+  first(q3.'Value') as 'Gender';
 
 res = cogroup res by 'index' left, q4 by 'index';
-res = foreach res generate first(res.'Name') as 'Name', first(res.'Age') as 'Age', first(res.'Gender') as 'Gender', first(q4.'Value') as 'Location';
+res = foreach res generate
+  first(res.'Name') as 'Name',
+  first(res.'Age') as 'Age',
+  first(res.'Gender') as 'Gender',
+  first(q4.'Value') as 'Location';
 
---- That's it!  Our table is now in a wide format.
+-- That's it!  Our table is now in a wide format.
 
 ```
 
