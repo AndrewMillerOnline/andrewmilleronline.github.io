@@ -6,6 +6,7 @@ image: /assets/marathon/kenyan-metals.png
 description: Data analysis and visualization project for a master's degree course
 tags: [Tableau CRM, Einstein Analytics, SAQL, Business Intelligence]
 categories: [Projects]
+hidden: true
 ---
 
 ## Project Description

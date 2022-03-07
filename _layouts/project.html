@@ -1,5 +1,6 @@
 ---
-layout: default
+layout: page
+refactor: true
 ---
 
 {% include lang.html %}
@@ -34,16 +35,6 @@ layout: default
 
     </div>
   </div> <!-- #core-wrapper -->
-
-  <!-- pannel -->
-  <div id="panel-wrapper" class="col-xl-3 pl-2 text-muted">
-
-    {% for _include in layout.pannel_includes %}
-      {% assign _include_path = _include | append: '.html' %}
-      {% include {{ _include_path }} %}
-    {% endfor %}
-  </div>
-
 </div>
 
 <!-- tail -->
