@@ -1,6 +1,6 @@
 ---
 title: "Andrew's Analysis: Matt Verlaque of UpLaunch"
-tags: [Entrepreneurship, "Andrew's Analysis"]
+tags: [Entrepreneurship]
 style: fill
 color: secondary
 description: My thoughts after listening to the Indie Hackers podcast with Matt Verlaque, founder of UpLaunch.

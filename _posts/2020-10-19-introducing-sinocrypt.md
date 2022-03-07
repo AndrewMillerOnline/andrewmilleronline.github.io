@@ -118,7 +118,7 @@ To encode, we then loop through the input
         print(encryptedMessage)
 ```
 
-{% include elements/button.html link="https://github.com/AndrewMillerOnline/sinocrypt" text="See Complete Source on GitHub" style="outline-primary" size="lg" %}
+[See Source on GitHub](https://github.com/AndrewMillerOnline/sinocrypt)
 
 ## Roadmap
 This made for a decent first version, but there are improvements that can be made.

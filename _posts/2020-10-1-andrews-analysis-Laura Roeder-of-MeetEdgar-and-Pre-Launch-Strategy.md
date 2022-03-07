@@ -1,6 +1,6 @@
 ---
 title: "Andrew's Analysis: Laura Roeder Of MeetEdgar And Pre-Launch Strategy"
-tags: [Entrepreneurship, "Andrew's Analysis"]
+tags: [Entrepreneurship]
 style: fill
 color: secondary
 description: My thoughts and actions after watching Laura Roeder present at Converted 2016

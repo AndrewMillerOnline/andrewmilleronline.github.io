@@ -1,6 +1,7 @@
 ---
 title: "SAQL Design Pattern: Reshaping Long to Wide (The Kansas City Shuffle)"
-tags: [Tableau CRM, Business Intelligence]
+tags: [Tableau CRM, Einstein Analytics, SAQL, Business Intelligence]
+categories: [Tableau CRM / Einstein Analytics, SAQL]
 style: fill
 color: primary
 description: 
@@ -77,6 +78,7 @@ res = foreach res generate
 -- That's it!  Our table is now in a wide format.
 
 ```
+{: file='SAQL'}
 
 # FAQ
 

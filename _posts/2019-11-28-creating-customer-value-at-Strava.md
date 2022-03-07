@@ -1,6 +1,6 @@
 ---
 title: "Creating Customer Value at Strava"
-tags: [Case Study, "Andrew's Analysis"]
+tags: [Case Study, Entrepreneurship]
 style: fill
 color: secondary
 description: Some thoughts regarding Strava's way forward.
