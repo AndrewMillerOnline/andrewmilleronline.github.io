@@ -30,7 +30,7 @@ For the JS-based websites, I needed to use Selenium webdriver in order to simula
 
 Here's a short snippet of the error handling:
 
-```python
+{% highlight python %}
 #loop through each page and gather the results
 num_error = 0
 while num_error < 5:
@@ -63,7 +63,7 @@ while num_error < 5:
         num_error += 1
     
 cleanup_and_save(year)
-```
+{% endhighlight %}
 
 Want to see the full code?  Check out the [Berlin scraper on GitHub](https://github.com/AndrewMillerOnline/marathon-scrapers/blob/main/Berlin/berlin.ipynb).
 
