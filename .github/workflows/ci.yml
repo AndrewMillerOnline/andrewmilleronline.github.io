@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby: [3]
+        ruby: [3.0]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
