@@ -1,12 +1,14 @@
 ---
 name: Marathon Viz
+title: Marathon Viz
 tools: [Python, Pandas, Jupyter Notebooks, R, ggplot]
 image: /assets/marathon/kenyan-metals.png
 description: Data analysis and visualization project for a master's degree course
-order: 1
+tags: [Tableau CRM, Einstein Analytics, SAQL, Business Intelligence]
+categories: [Projects]
 ---
 
-# Project Description
+## Project Description
 
 For the final project in my data visualization course as part of the MS Data Science program at DePaul, I had to create complex visualizations from the dataset of my choice.  As an avid runner, naturally I wanted to visualize something running related.  Unable to find a suitable dataset, I instead created my own using Python to scrape over 2 million marathon finisher results from four of the largest marathons in the world.  I then used R and ggplot to create visualizations from this data.
 

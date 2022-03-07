@@ -29,7 +29,7 @@ description: >-                        # used by seo meta and the atom feed
   Musing on data, Tableau CRM/Einstein Analytics, and development
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
-url: 'https://www.andrewmiller.online'
+url: 'https://andrewmiller.online'
 
 github:
   username: AndrewMillerOnline             # change to your github username
@@ -134,9 +134,6 @@ collections:
   tabs:
     output: true
     sort_by: order
-  projects:
-    output: true
-    sort_by: order
 
 defaults:
   - scope:
@@ -171,7 +168,7 @@ defaults:
       path: _projects
     values:
       layout: project
-      toc: true
+      toc: false
       permalink: /projects/:title/
 
 sass:

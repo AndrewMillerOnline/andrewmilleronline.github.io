@@ -1,7 +1,7 @@
 ---
 name: Viromob
 tools: [Node.js, Angular, Ionic, Firebase]
-image: \assets\viromob-logo.png
+image: /assets/viromob-logo.png
 description: Mobile-first giveaway app
 order: 7
 ---
