@@ -3,7 +3,8 @@ name: Baton Rouge 311 Dashboard
 tools: [Tableau]
 image: /assets/baton-rouge-311.png
 description: A Tableau dashboard to display KPIs relevant to Baton Rouge's 311 responses
-order: 6
+categories: [Projects]
+hidden: true
 ---
 
 ## The Data

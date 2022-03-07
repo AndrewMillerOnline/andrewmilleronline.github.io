@@ -3,7 +3,8 @@ name: Illinois Hiring Dashboard
 tools: [Tableau]
 image: /assets/illinois-hiring-tableau-viz.png
 description: A Tableau dashboard that visualizes the State of Illinois' hiring data
-order: 3
+categories: [Projects]
+hidden: true
 ---
 
 # The Data

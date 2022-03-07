@@ -3,7 +3,8 @@ name: Veteran GI Bill Usage Research
 tools: [Stata]
 image: /assets/veterans-as-maximizers.png
 description: A research paper I authored, "Measuring the Effects of Post-9/11 GI Bill Changes on Veteran Education Benefit Usage"
-order: 5
+categories: [Projects]
+hidden: true
 ---
 
 ## Background

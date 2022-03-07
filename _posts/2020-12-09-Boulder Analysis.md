@@ -3,7 +3,8 @@ name: What's on Your Mind, Boulder?
 tools: [Python, Pandas]
 image: /assets/boulder_6_0.png
 description: A data analysis project on three years of emails sent to the Boulder city council
-order: 2
+categories: [Projects]
+hidden: true
 ---
 # Whats on Your Mind, Boulder?
 

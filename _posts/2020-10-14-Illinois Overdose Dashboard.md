@@ -3,7 +3,8 @@ name: Illinois Overdose Dashboard
 tools: [Tableau]
 image: /assets/illinois-overdose-tableau-viz.png
 description: A Tableau dashboard that visualizes overdose deaths in Illinois between 2013 and 2018
-order: 4
+categories: [Projects]
+hidden: true
 ---
 
 # The Data
