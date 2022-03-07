@@ -1,6 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # Deploy the content of _site to 'origin/<pages_branch>'
+#
+# v2.5
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2020 Cotes Chung
+# Published under MIT License
 
 set -eu
 
@@ -15,6 +20,11 @@ init() {
     exit -1
   fi
 
+  # Gemfile could be changed by `bundle install` in actions workflow
+  if [[ -n $(git status Gemfile.lock --porcelain) ]]; then
+    git checkout -- Gemfile.lock
+  fi
+
   if [[ -z $(git branch -av | grep "$PAGES_BRANCH") ]]; then
     _no_branch=true
     git checkout -b "$PAGES_BRANCH"
@@ -24,7 +34,7 @@ init() {
 }
 
 backup() {
-  mv "_site"/* "$_backup_dir"
+  mv _site/* "$_backup_dir"
   mv .git "$_backup_dir"
 
   # When adding custom domain from Github website,
