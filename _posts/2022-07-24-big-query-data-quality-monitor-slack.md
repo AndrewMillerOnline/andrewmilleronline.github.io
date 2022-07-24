@@ -1,7 +1,7 @@
 ---
-title: Making an Automated Google Big Query Data Quality Monitor with Slack Alerts
+title: Making an Automated Google BigQuery Data Quality Monitor with Slack Alerts
 tags: [CRM Analytics, Business Intelligence]
-categories: [CRM Analytics, Business Intelligence, Google Cloud Platform]
+categories: [Business Intelligence]
 description: A guide on how to build a data quality regression testing suite for Google BigQuery, complete with Slack alerts
 ---
 
