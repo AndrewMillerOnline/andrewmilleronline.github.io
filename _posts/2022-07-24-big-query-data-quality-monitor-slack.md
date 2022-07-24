@@ -240,4 +240,4 @@ If everything is good with your data, then absolutely nothing will happen!  We d
 
 However, if there are any data errors, you should see a new Slack alert pop up about a minute after initiating the transfer run (it takes about a minute in my experience for the transfer runs to complete).
 
-![Our bot works](/assets/dq-bot-working.png)
+![Our bot works](/assets/dq-bot-working.png) 
