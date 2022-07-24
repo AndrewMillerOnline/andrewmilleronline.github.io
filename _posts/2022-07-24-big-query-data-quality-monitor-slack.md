@@ -134,7 +134,7 @@ Under the Destination for query results section, select the destination table yo
 
 Finally, under the notification options section, enter the pub/sub topic you created in Step 1 above.
 
-### 3. Create Slack App
+### 4. Create Slack App
 
 It's time to create our Slack app.
 
@@ -146,7 +146,7 @@ You'll be returned to the Incoming Webhooks page where you can now see a URL tha
 
 That's it!  Before moving on to the next step, you might want to give your app a sweet icon and meaningful description under the Basic Information section.
 
-### 4. Create Cloud Function
+### 5. Create Cloud Function
 
 We're almost done!  We now have automated data quality tests running, which publish to a pub/sub topic when bad data is found.  We also have a Slack app that will alert us to those test failures.  We just need a relay to tie them together.
 
