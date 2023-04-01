@@ -1,7 +1,7 @@
 ---
 title: "SAQL Design Pattern: Reshaping Long to Wide (The Kansas City Shuffle)"
 tags: [Tableau CRM, Einstein Analytics, SAQL, Business Intelligence]
-categories: [Tableau CRM / Einstein Analytics, SAQL]
+categories: [CRM Analytics / Tableau CRM / Einstein Analytics, SAQL]
 description: 
 ---
 

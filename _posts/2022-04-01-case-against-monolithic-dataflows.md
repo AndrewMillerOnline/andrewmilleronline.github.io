@@ -1,7 +1,7 @@
 ---
 title: "The Case Against Monolithic Dataflows"
 tags: [Tableau CRM, Einstein Analytics, Dataflow]
-categories: [Tableau CRM / Einstein Analytics, Dataflow]
+categories: [CRM Analytics / Tableau CRM / Einstein Analytics, Dataflows & Recipes]
 description: Some thoughts on best practices around architecting dataflows and recipes
 ---
 
