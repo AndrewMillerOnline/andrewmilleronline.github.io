@@ -1,0 +1,15 @@
+- name: HTML/CSS/Javascript
+  percentage: 90
+  color: danger
+
+- name: SQL
+  percentage: 75
+  color: success
+
+- name: Python
+  percentage: 55
+  color: secondary
+
+- name: R
+  percentage: 55
+  color: warning
