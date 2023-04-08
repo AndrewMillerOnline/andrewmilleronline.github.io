@@ -22,7 +22,7 @@ To help make it more clear to your users when their data was updated, I used CRM
 Some notes:
 - If the next refresh is within the next hour, it will show the countdown in minutes
 - If the next refresh is running late (dataflows/recipes are backed up, we've all been there), it will omit the time until next refresh
-- The dates are timezone-aware based on the user's browser
+- The dates are timezone-aware based on the user's browser.  So in the below screenshot, the LWC is displaying a correct last refresh time of 1:04pm.  The dashboard refresh time at the top, howver, is incorrect: it's using the timezone configured on my Salesforce user object, which I hadn't bothered to set.
 
 ## Preview
 
