@@ -14,7 +14,7 @@ There was a situation where I work recently where two of our snapshot recipes ki
 
 Simply put, the added dimension of time can provide incredible value to your data.  It allows your analysis to go one level deeper.  Where once business users were asking "*What is our NPS?*" or "*How much is in the sales pipeline?*", the addition of time via a snapshot can transform those questions into "*How is our NPS changing over time?*" and "*How is our pipeline this quarter compared to the same quarter last year?*".  This superpowers your dashboards: rather than being informational and merely reporting on the current status of a given KPI, they are now facilitating analysis and helping to drive decision making.
 
-That's maybe a bit lofty, and perhaps I'm waxing philosphical, but I hope the point has come across.  The TL;DR is that if a certain metric is worth reporting on, it's likely worth tracking that metric over time too.
+That's maybe a bit lofty, and perhaps I'm waxing philosophical, but I hope the point has come across.  The TL;DR is that if a certain metric is worth reporting on, it's likely worth tracking that metric over time too.
 
 ## Snapshot recipe vs Watchlist
 
@@ -36,13 +36,13 @@ While I think the Watchlist is great and has some good use cases, in general I'd
 
 ## Considerations when snapshotting
 
-Snapshot datasets by their very definition will grow over time as the recipe continually adds more and more rows onto the dataset.  If you're not careful, this can lead to snapshot recipes that eventually explode in runtime, bringing your entire CRMA data infrastructure to a grinding halt.  However, there are four key areas to consider when designign your snapshot recipe that will prevent this explosion: the grain of your snapshot data, the lookback period, your data retention period, and when the snapshot is scheduled to run.
+Snapshot datasets by their very definition will grow over time as the recipe continually adds more and more rows onto the dataset.  If you're not careful, this can lead to snapshot recipes that eventually explode in runtime, bringing your entire CRMA data infrastructure to a grinding halt.  However, there are four key areas to consider when designing your snapshot recipe that will prevent this explosion: the grain of your snapshot data, the lookback period, your data retention period, and when the snapshot is scheduled to run.
 
 ### Grain
 
 The first and most important thing you should consider is the grain of your data, as this can make orders of magnitude worth of difference in how quickly your dataset grows.
 
-Let's use opportunities as an example.  Does your snapshot dataset need to contain every single opportunity?  If you want to see how individual opportunities changes over time, it very well might!  However, if the end goal of your analysis is to see how the opportunity pipeline for an individual sales rep changes over time, then you can probably aggregate your snapshot at the rep level instead.  Continuing this example, if your org has 1,000 reps with an average of 30 opps each, an opportunity-level grain will result in snapshot dataset growth of 30,000 rows per day whereas a rep-level grain would result in only 1,000 rows per day.  This makes a **huge** impact over time.
+Let's use opportunities as an example.  Does your snapshot dataset need to contain every single opportunity?  If you want to see how individual opportunities change over time, it very well might!  However, if the end goal of your analysis is to see how the opportunity pipeline for an individual sales rep changes over time, then you can probably aggregate your snapshot at the rep level instead.  Continuing this example, if your org has 1,000 reps with an average of 30 opps each, an opportunity-level grain will result in snapshot dataset growth of 30,000 rows per day whereas a rep-level grain would result in only 1,000 rows per day.  This makes a **huge** impact over time.
 
 ### Lookback Period
 
@@ -51,7 +51,7 @@ It's also very important to consider the lookback period, or how much data you w
 
 ### Data Retention Period
 
-The third aspect to consider if your snapshot's data retention period.  In the above paragraph I mentioned limiting how much data you capture in each snapshot.  However, if you never remove any data from your final output the dataset will grow endlessly.  By adding a data retention filter, as I'll show below, your recipe will instead remove data from the output that's no longer relevant.
+The third aspect to consider is your snapshot's data retention period.  In the above paragraph I mentioned limiting how much data you capture in each snapshot.  However, if you never remove any data from your final output the dataset will grow endlessly.  By adding a data retention filter, as I'll show below, your recipe will instead remove data from the output that's no longer relevant.
 
 ### Scheduling
 
@@ -69,11 +69,11 @@ Another benefit to scheduling off peak is that you're more likely to capture the
 
 Snapshot recipes all have the same structure, pictured above.  Here's how each node works:
 - **Ingest data to snapshot**.  This is where you're ingest opportunity, quota, or whatever other object you want to snapshot.
-- **Lookback period filter**.  As described above, this is where you'll filter out irrelevant data.  Maybe this filters to opportunities created this quarter or to quotes generated today -- it really depends on the business requirements.
+- **Lookback period filter**.  As described above, this filter controls what data you'll add.  Maybe this filters to opportunities created this quarter or to quotes generated today -- it really depends on the business requirements.
 - **Aggregate to a higher grain**.  Your snapshot may or may not have this node.  If you can aggregate, I highly recommend doing so.  If your requirements don't allow it, simply delete this node from the recipe.
 - **Transform**.  This is the final step before we append the current snapshot data to the existing dataset.  In this step you'll want to generate a "Snapshot Date" variable to represent when the snapshot was taken.  You can also do any other variable cleanup or transformation work needed.
 - **Ingest snapshot dataset**.  This node reads in the same dataset that you'll be outputting at the end of the recipe.  By reading in the old dataset then appending a new snapshot on top of the old results, we'll continue to grow out the snapshot over time.
-- **Data retention filter**.  As discussed above, at a certain point your old snapshot data is no longer necessary.  Here you can filter on the Snapshot Date column created in the Transform step above, removing snapshot data that's older than your retention window.
+- **Data retention filter**.  In contrast to the lookback period filter, which determines what data your recipes _adds_ to the dataset, the data retention filter determines what data to _keep_ in your dataset.  This is accomplished through a filter on the Snapshot Date created in the Transform step above, thereby removing snapshot data that's older than your retention window.
 - **Append new snapshot to existing dataset**.  Stack the new and old data together to grow your dataset.
 - **Output snapshot dataset**.  Output the data for consumption.
 
@@ -81,7 +81,7 @@ Snapshot recipes all have the same structure, pictured above.  Here's how each n
 
 You may have noticed something interesting about the recipe structure above: we're reading in the snapshot dataset, appending new data to it, then _overwriting_ the snapshot dataset.  That means when you go to create this recipe for the first time, that snapshot dataset doesn't yet exist.  As such, you have to create this recipe in two steps.
 
-First you'll create a recipe that includes the nodes from the uppermost "branch" of the screenshotted recipe.  Specifically, you'll ingest your data, filter it, aggregate itm transform it, and then output it.  That creates your snapshot dataset for the first time.
+First you'll create a recipe that includes the nodes from the uppermost "branch" of the screenshotted recipe.  Specifically, you'll ingest your data, filter it, aggregate it, transform it, and then output it.  That creates your snapshot dataset for the first time.
 
 Next you'll add the bottom nodes as well as the append.  Specifically, you'll edit the recipe to bring in the existing snapshot dataset, add the data retention filter, then add the append node.
 
